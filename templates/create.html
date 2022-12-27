@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Create a New Product {% endblock %}</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" name="name"
+               placeholder="Enter name of new product" class="form-control"
+               value="{{ request.form['name'] }}"></input>
+    </div>
+
+    <div class="form-group">
+        <label for="description">Description</label>
+        <input type="text" name="description"
+               placeholder="Enter description of new product" class="form-control"
+               value="{{ request.form['description'] }}"></input>
+    </div>
+
+    <div class="form-group">
+        <label for="price">price</label>
+        <input type="number" name="price"
+               placeholder="Enter price of new product" class="form-control"
+               value="{{ request.form['price'] }}"></input>
+    </div>
+
+
+    <div class="form-group">
+        <label for="list">List</label>
+        <select class="form-control" name="list">
+            {% for list in lists %}
+                {% if list['title'] == request.form['list'] %}
+                    <option value="{{ request.form['list'] }}" selected>
+                        {{ request.form['list'] }}
+                    </option>
+                {% else %}
+                    <option value="{{ list['title'] }}">
+                        {{ list['title'] }}
+                    </option>
+                {% endif %}
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
+{% endblock %}

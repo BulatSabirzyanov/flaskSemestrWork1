@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Удаление
+{% endblock %}
+
+{% block content %}
+
+<p>Вы уверены что хотите удалить товар:</p>
+<p>Название: {{ product.name }}</p>
+<p>Цена: {{ product.price }}</p>
+<form action="{{ url_for('delete', pid=product['id']) }}" method="post">
+    <input type="submit" value="Удалить"
+            onclick="return confirm('Are you sure you want to delete this post?')">
+</form>
+{% endblock %}

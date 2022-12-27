@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Редактирование
+{% endblock %}
+
+{% block content %}
+<div>
+    <form action="{{ url_for('edit', pid=product['id']) }}" method="post">
+        <p>Название</p>
+        <input type="text" name="name" value="{{ product['name'] }}"/>
+
+        <p>Описание</p>
+        <input type="text" name="description" value="{{ product['description'] }}" placeholder="some text"/>
+
+        <p>Цена</p>
+        <input type="number" name="price" value="{{ product['price'] }}" min="0" max="1000"/>
+
+        <button type="submit">Submit</button>
+
+    </form>
+
+</div>
+
+{% endblock %}
